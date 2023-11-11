@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, reactive, watch } from "vue";
 import { Eye, EyeOff, XCircle } from "lucide-vue-next";
-import Modal from "@/Modal.vue";
+import Modal from "./Modal.vue";
 
 const emits = defineEmits(["switchMethod"]);
 
@@ -54,7 +54,7 @@ const signIn = () => {
   }
 };
 
-const validateWatcher = (type: "login" | "password", value: string) => {
+const validateWatcher = (value: string) => {
   return value.length >= 3 && value.length <= 20;
 };
 
@@ -62,7 +62,7 @@ const validateWatcher = (type: "login" | "password", value: string) => {
 watch(
   () => signInForm.login,
   (value) => {
-    const isValidName = validateWatcher("login", value);
+    const isValidName = validateWatcher(value);
     if (!isValidName) {
       signInFormValidate.login =
         "Имя должно быть больше 3 и меньше 20 символов";
@@ -78,7 +78,7 @@ watch(
 watch(
   () => signInForm.password,
   (value) => {
-    const isValidPassword = validateWatcher("password", value);
+    const isValidPassword = validateWatcher(value);
     if (!isValidPassword) {
       signInFormValidate.password =
         "Пароль должен быть больше 3 и меньше 20 символов";
@@ -109,7 +109,7 @@ watch(
           minlength="3"
         />
         <span v-if="signInFormValidate.login" class="form__validator">
-          <XCircle size="20" />{{ signInFormValidate.login }}</span
+          <XCircle :size="20" />{{ signInFormValidate.login }}</span
         >
         <div class="form__password-container">
           <input
@@ -131,7 +131,7 @@ watch(
             <Eye v-else />
           </button>
           <span v-if="signInFormValidate.password" class="form__validator">
-            <XCircle size="20" />{{ signInFormValidate.password }}</span
+            <XCircle :size="20" />{{ signInFormValidate.password }}</span
           >
         </div>
       </div>

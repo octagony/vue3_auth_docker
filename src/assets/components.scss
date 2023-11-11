@@ -74,6 +74,8 @@
   }
 
   &__validator {
+          font-size: 0.9rem;
+          text-align: left;
     display: inline-block;
     color: $danger;
     padding: 0.25rem;

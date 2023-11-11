@@ -11,9 +11,9 @@ const emit = defineEmits(["close"]);
     <div class="modal__container">
       <div class="modal__content">
         <p class="modal__message">{{ props.message }}</p>
-        <CheckCircle2 size="60" class="modal__icon" />
+        <CheckCircle2 :size="60" class="modal__icon" />
         <button class="modal__close" @click="$emit('close')">
-          <X />
+          <X :size="20" />
         </button>
       </div>
     </div>

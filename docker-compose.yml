@@ -1,0 +1,11 @@
+version: '3'
+services:
+  vue_app:
+    container_name: vue-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+     - '.:/app'
+    ports:
+      - "3001:3000"

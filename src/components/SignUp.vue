@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref, reactive, watch } from "vue";
 import { Eye, EyeOff, XCircle } from "lucide-vue-next";
-import Modal from "@/Modal.vue";
+import Modal from "./Modal.vue";
 
-const emits = defineEmits(["switchMethod"]);
+const emit = defineEmits(["switchMethod"]);
 
 const inputPassword = ref<HTMLInputElement | null>(null);
 const confirmPassword = ref<HTMLInputElement | null>(null);
@@ -217,7 +217,7 @@ const validateWatcher = (type: TSignUp, value: string) => {
           tabindex="1"
         />
         <span v-if="signUpFormValidate.name" class="form__validator">
-          <XCircle size="20" />{{ signUpFormValidate.name }}</span
+          <XCircle :size="20" />{{ signUpFormValidate.name }}</span
         >
         <input
           v-model="signUpForm.email"
@@ -229,7 +229,7 @@ const validateWatcher = (type: TSignUp, value: string) => {
         />
 
         <span v-if="signUpFormValidate.email" class="form__validator">
-          <XCircle size="20" />{{ signUpFormValidate.email }}</span
+          <XCircle :size="20" />{{ signUpFormValidate.email }}</span
         >
 
         <div class="form__password-container">
@@ -253,7 +253,7 @@ const validateWatcher = (type: TSignUp, value: string) => {
             <Eye v-else tabindex="4" />
           </button>
           <span v-if="signUpFormValidate.password" class="form__validator">
-            <XCircle size="20" />{{ signUpFormValidate.password }}</span
+            <XCircle :size="20" />{{ signUpFormValidate.password }}</span
           >
         </div>
         <div class="form__password-container">
@@ -284,7 +284,7 @@ const validateWatcher = (type: TSignUp, value: string) => {
             v-if="signUpFormValidate.passwordConfirmation"
             class="form__validator"
           >
-            <XCircle size="20" />{{
+            <XCircle :size="20" />{{
               signUpFormValidate.passwordConfirmation
             }}</span
           >
@@ -300,93 +300,4 @@ const validateWatcher = (type: TSignUp, value: string) => {
   />
 </template>
 
-<style lang="scss">
-.form {
-  width: 80%;
-  @media (max-width: 640px) {
-    width: 100%;
-  }
-  &__header {
-    font-weight: bold;
-    font-size: 2rem;
-  }
-  &__method {
-    margin-top: 1rem;
-    cursor: pointer;
-    &-action {
-      color: $primary-blue;
-    }
-  }
-  &__control {
-    margin-top: 1.5rem;
-  }
-  &__input {
-    padding: 1rem 1.15rem;
-    width: 100%;
-    margin-top: 2rem;
-    border: 1px solid rgba($color: $text-dark, $alpha: 0.2);
-    border-radius: 1rem;
-    outline: none;
-  }
-  &__password {
-    &-container {
-      position: relative;
-      &:last-child {
-        margin-bottom: 3rem;
-      }
-    }
-    &-eye {
-      border: none;
-      outline: none;
-      background: transparent;
-      right: 20px;
-      top: 44px;
-      &:focus {
-        border: 1px solid rgba($color: $text-dark, $alpha: 0.5);
-      }
-    }
-  }
-
-  &__validator {
-    display: inline-block;
-    color: $danger;
-    padding: 0.25rem;
-    margin-top: 0.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    padding-inline: 1rem;
-  }
-
-  &__submit {
-    padding: 1rem 1.15rem;
-    width: 100%;
-    display: inline-block;
-    background-color: $primary-blue;
-    outline: none;
-    border: 1px solid rgba($color: $text-dark, $alpha: 0.1);
-    border-radius: 1rem;
-    color: $white;
-    font-size: 1.15rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    @media (hover: hover) {
-      &:hover {
-        color: $text-dark;
-        background: $white;
-        border: 1px solid rgba($color: $text-dark, $alpha: 1);
-      }
-    }
-    &:focus {
-      color: $text-dark;
-      background: $white;
-      border: 1px solid rgba($color: $text-dark, $alpha: 1);
-    }
-    @media (max-width: 640px) {
-      font-size: 1.05rem;
-      padding: 1rem;
-    }
-  }
-}
-</style>
+<style lang="scss"></style>
