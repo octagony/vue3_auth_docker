@@ -6,12 +6,12 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install --production
+RUN npm install
 
 COPY . .
 
 RUN npm run build
 
-EXPOSE 3000
+EXPOSE 5173
 
-CMD ["http-server", "dist", "-a", "172.24.0.2", "-p", "3001"]
+CMD ["http-server", "dist", "-a", "172.18.0.2", "-p", "3001"]
