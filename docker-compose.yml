@@ -1,11 +1,7 @@
 version: '3'
 services:
-  vue_app:
-    container_name: vue-app
+  vite_vue_docker:
     build:
-      context: .
-      dockerfile: Dockerfile
-    volumes:
-     - '.:/src'
+      dockerfile: ./Dockerfile
     ports:
-      - "5173"
+      - '3000:5173'
